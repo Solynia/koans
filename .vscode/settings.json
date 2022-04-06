@@ -1,12 +1,12 @@
 {
     "[ruby]": {
-        "editor.formatOnSave": true,
+        // "editor.formatOnSave": true,
         // "editor.defaultFormatter": "rebornix.ruby",
         "editor.tabSize": 2,
     },
-    "ruby.useLanguageServer": true,
-    "ruby.codeCompletion": "rcodetools",
+    // "ruby.useLanguageServer": true,
+    // "ruby.codeCompletion": "rcodetools",
     // "ruby.format": "rufo",
-    "ruby.intellisense": "rubyLocate",
-    "ruby.rubocop.onSave": true,
+    // "ruby.intellisense": "rubyLocate",
+    // "ruby.rubocop.onSave": true,
 }
