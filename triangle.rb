@@ -14,19 +14,14 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # all sides are the same length
-  equal_sides = [
-    a == c,
-    a == b,
-    b == c,
-  ]
-  count = equal_sides.inject(0){ |sum, is_equal| is_equal ? sum+1 : sum }
-  if count == 3
-    :equilateral
-  elsif count == 1
-    :isosceles
-  else
-    :scalene
+  sides = [a, b, c]
+  sides.permutation do |sides| 
+    raise TriangleError unless sides[0] + sides[1] > sides[2]
+  end
+  case sides.uniq.size
+    when 3; :scalene
+    when 2; :isosceles
+    when 1; :equilateral
   end
 end
 
