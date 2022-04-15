@@ -29,8 +29,52 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 #
 # Your goal is to write the score method.
 
+def default_scoring(number, amount)
+  return amount >= 3 ? number * 100 : 0
+end
+
 def score(dice)
   # You need to write this method
+  return 0 if dice.size == 0 || dice.size > 5
+  scores = {
+    1 => 0,
+    2 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+    6 => 0,
+  }
+  dice.each do |d|
+    scores[d] = scores[d]+1
+  end
+  result = 0
+  scores.each do |score, amount|
+    case score
+      when 1
+        base_score = 100
+        if amount >= 3
+          result += 1000 + (amount - 3) * base_score 
+        else
+          result += amount * base_score
+        end
+      when 5
+        base_score = 50
+        if amount >= 3
+          result += default_scoring(score, amount) + (amount - 3) * base_score 
+        else
+          result += amount * base_score
+        end
+      when 2
+        result += default_scoring(score, amount)
+      when 3
+        result += default_scoring(score, amount)
+      when 4
+        result += default_scoring(score, amount)
+      when 6
+        result += default_scoring(score, amount)
+    end
+  end
+  return result
 end
 
 class AboutScoringProject < Neo::Koan
